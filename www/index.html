@@ -168,12 +168,12 @@
       var canvas = $("#mycanvas")[0];
       var ctx = canvas.getContext("2d");
       var img = new Image();
-      img.src = "ksuisbg.gif";
+      img.src = "neochi.gif";  
       img.onload = function(){
-        ctx.drawImage(img, 0, 0, 300, 300);
-      };
-        
+        ctx.drawImage(img, -30, -20, 200, 300);
+      };   
     }
+
 
     var audio = new Audio();
     audio.src = "pin.wav";
@@ -189,8 +189,10 @@
     // ButtonBがクリックされた時の処理
     function btnBClick(e){
         active = false;
-        
+        $("#remain").html("遅刻回避");
+        document.body.style.backgroundColor = "pink";
     }
+
 
     // ButtonCがクリックされた時の処理
     function btnCClick(e){
@@ -198,7 +200,7 @@
         active = false;
         period = 60* parseInt( $("#minute").val() ) + parseInt( $("#second").val() );
         $("#time").html("経過時間: 0");
-        $("#remain").html("残り時間: " + period);
+        $("#remain").html("遅刻まで: " + period);
         
     }
     
@@ -209,7 +211,7 @@
           var time = parseInt( (new Date() - startTime)/1000 );
           var rest = period - time;
           $("#time").html("経過時間: " + time);
-          $("#remain").html("残り時間: " + rest);
+          $("#remain").html("遅刻まで: " + rest);
           analog(rest);
         }
 
